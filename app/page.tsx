@@ -74,21 +74,89 @@ export default function ComingSoonPage() {
             <div className="absolute inset-0 bg-gradient-to-b from-red-500/3 via-transparent to-blue-500/3 rounded-3xl"></div>
 
             <div className="relative z-10">
-              {/* Logo with rounded corners */}
+              {/* Logo with enhanced spark effects */}
               <div className="flex justify-center mb-12">
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-red-500/15 via-blue-500/10 to-purple-500/15 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                  <div className="relative backdrop-blur-sm bg-gradient-to-b from-white/15 to-white/5 rounded-3xl p-6 border border-white/20 shadow-xl">
-                    <div className="w-0 h-0 md:w-32 md:h-32 rounded-2xl overflow-hidden bg-white/10 p-3">
-                      <Image
-                        src="/logo.png"
-                        alt="Locama Logo"
-                        width={128}
-                        height={128}
-                        className="w-full h-full object-contain rounded-2xl"
-                        priority
+                  <div className="absolute inset-0 bg-gradient-to-r from-red-500/15 via-blue-500/10 to-purple-500/15 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+
+                  {/* Enhanced Spark Effects Container */}
+                  <div className="absolute -inset-16 pointer-events-none">
+                    {/* Side orbiting sparks */}
+                    {[...Array(18)].map((_, i) => (
+                      <div
+                        key={`orbit-${i}`}
+                        className="absolute rounded-full"
+                        style={{
+                          left: `${15 + (i % 4) * 25}%`,
+                          top: `${i < 9 ? 10 + (i % 3) * 10 : 80 - (i % 3) * 10}%`,
+                          width: `${3 + Math.random() * 6}px`,
+                          height: `${3 + Math.random() * 6}px`,
+                          background: `radial-gradient(circle, ${
+                            ["rgba(255,100,100,0.9)", "rgba(100,150,255,0.9)", "rgba(200,100,255,0.9)"][i % 3]
+                          } 0%, transparent 70%)`,
+                          boxShadow: `0 0 6px 2px ${
+                            ["rgba(255,100,100,0.4)", "rgba(100,150,255,0.4)", "rgba(200,100,255,0.4)"][i % 3]
+                          }`,
+                          animation: `sideSpark ${3 + Math.random() * 4}s ease-in-out infinite ${i * 0.2}s`,
+                        }}
                       />
-                    </div>
+                    ))}
+
+                    {/* Floating edge sparks */}
+                    {[...Array(12)].map((_, i) => (
+                      <div
+                        key={`float-${i}`}
+                        className="absolute"
+                        style={{
+                          left: i < 6 ? `${5 + Math.random() * 15}%` : `${80 + Math.random() * 15}%`,
+                          top: `${10 + Math.random() * 80}%`,
+                          width: `${2 + Math.random() * 4}px`,
+                          height: `${2 + Math.random() * 4}px`,
+                          background: `radial-gradient(circle, ${
+                            ["rgba(255,100,100,0.8)", "rgba(100,150,255,0.8)", "rgba(200,100,255,0.8)"][i % 3]
+                          } 0%, transparent 70%)`,
+                          boxShadow: `0 0 4px 1px ${
+                            ["rgba(255,100,100,0.3)", "rgba(100,150,255,0.3)", "rgba(200,100,255,0.3)"][i % 3]
+                          }`,
+                          animation: `edgeSpark ${3 + Math.random() * 3}s ease-in-out infinite ${i * 0.3}s`,
+                        }}
+                      />
+                    ))}
+
+                    {/* Corner shooting sparks */}
+                    {[...Array(8)].map((_, i) => {
+                      const corner = i % 4;
+                      let startX = corner === 0 || corner === 3 ? 10 : 90;
+                      let startY = corner === 0 || corner === 1 ? 10 : 90;
+
+                      return (
+                        <div
+                          key={`corner-${i}`}
+                          className="absolute"
+                          style={{
+                            left: `${startX}%`,
+                            top: `${startY}%`,
+                            width: "2px",
+                            height: "2px",
+                            background: "white",
+                            borderRadius: "50%",
+                            boxShadow: "0 0 4px 1px rgba(255, 255, 255, 0.7)",
+                            animation: `cornerSpark ${2 + Math.random() * 2}s ease-out infinite ${i * 0.5}s`,
+                          }}
+                        />
+                      );
+                    })}
+                  </div>
+
+                  <div className="w-28 h-28 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-2xl overflow-hidden bg-white/10 p-3">
+                    <Image
+                      src="/logo.png"
+                      alt="Locama Logo"
+                      width={192}
+                      height={192}
+                      className="w-full h-full object-contain rounded-2xl"
+                      priority
+                    />
                   </div>
                 </div>
               </div>
@@ -200,7 +268,13 @@ export default function ComingSoonPage() {
                         <span className="text-sm text-red-400 font-medium">7%</span>
                       </div>
                       <div className="w-full bg-gray-700/50 rounded-full h-2">
-                        <div className="bg-gradient-to-r from-red-500 to-pink-500 h-2 rounded-full w-[7%] shadow-sm shadow-red-500/30"></div>
+                        <div className="bg-gradient-to-r from-red-500 to-pink-500 h-2 rounded-full w-[7%] shadow-sm shadow-red-500/30 relative">
+                          {/* Spark at tip of progress bar */}
+                          <div className="absolute -right-1 top-1/2 -translate-y-1/2">
+                            <div className="w-3 h-3 rounded-full bg-pink-300 spark-core"></div>
+                            <div className="absolute w-4 h-4 -top-0.5 -left-0.5 spark-particles"></div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -240,6 +314,87 @@ export default function ComingSoonPage() {
           </div>
         </div>
       </div>
+
+      {/* Add the new keyframe animations */}
+      <style jsx global>{`
+        @keyframes sideSpark {
+          0%, 100% {
+            opacity: 0;
+            transform: translateX(0) scale(0.2);
+          }
+          25% {
+            opacity: 0.9;
+            transform: translateX(${Math.random() > 0.5 ? 10 : -10}px) scale(1);
+          }
+          75% {
+            opacity: 0.7;
+            transform: translateX(${Math.random() > 0.5 ? -8 : 8}px) scale(0.7);
+          }
+        }
+        
+        @keyframes edgeSpark {
+          0%, 100% {
+            opacity: 0;
+            transform: translateX(0) translateY(0) scale(0.2);
+          }
+          25% {
+            opacity: 0.8;
+            transform: translateX(${Math.random() > 0.5 ? 12 : -12}px) translateY(-5px) scale(1);
+          }
+          75% {
+            opacity: 0.6;
+            transform: translateX(${Math.random() > 0.5 ? -8 : 8}px) translateY(5px) scale(0.7);
+          }
+        }
+        
+        @keyframes cornerSpark {
+          0% {
+            opacity: 0;
+            transform: scale(0.2);
+          }
+          40% {
+            opacity: 0.9;
+            transform: translateX(${Math.random() > 0.5 ? 25 : -25}px) 
+                      translateY(${Math.random() > 0.5 ? 25 : -25}px) scale(1);
+          }
+          100% {
+            opacity: 0;
+            transform: translateX(${Math.random() > 0.5 ? 40 : -40}px) 
+                      translateY(${Math.random() > 0.5 ? 40 : -40}px) scale(0.1);
+          }
+        }
+
+        .spark-core {
+          box-shadow: 0 0 8px 2px rgba(255, 105, 180, 0.7);
+          animation: sparkPulse 2s infinite;
+        }
+        
+        .spark-particles::before,
+        .spark-particles::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 1px;
+          background: linear-gradient(90deg, rgba(255, 0, 0, 0.8), transparent);
+          animation: sparkRotate 1.5s linear infinite;
+        }
+        
+        .spark-particles::after {
+          animation-delay: 0.75s;
+        }
+        
+        @keyframes sparkPulse {
+          0%, 100% { transform: scale(0.7); opacity: 0.7; }
+          50% { transform: scale(1.2); opacity: 1; }
+        }
+        
+        @keyframes sparkRotate {
+          0% { transform: rotate(0deg) translateX(1px); opacity: 0; }
+          30% { opacity: 1; }
+          70% { opacity: 1; }
+          100% { transform: rotate(360deg) translateX(1px); opacity: 0; }
+        }
+      `}</style>
     </div>
   )
 }

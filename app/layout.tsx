@@ -6,19 +6,19 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Locama - Something Epic is Coming",
+  title: "Locama - Coming Soon!",
   description:
     "We're crafting something revolutionary. Join the exclusive waitlist and be among the first to experience the future.",
   keywords: "Locama, coming soon, launch, waitlist, revolutionary, epic",
   openGraph: {
-    title: "Locama - Something Epic is Coming",
+    title: "Locama - Coming Soon!",
     description:
       "We're crafting something revolutionary. Join the exclusive waitlist and be among the first to experience the future.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Locama - Something Epic is Coming",
+    title: "Locama - Coming Soon!",
     description:
       "We're crafting something revolutionary. Join the exclusive waitlist and be among the first to experience the future.",
   },
