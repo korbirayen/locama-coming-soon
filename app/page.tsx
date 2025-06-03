@@ -235,7 +235,7 @@ export default function ComingSoonPage() {
           {/* Footer */}
           <div className="pt-8 pb-8">
             <p className="text-sm text-gray-500">
-              © 2024 Locama. Empowering consultants with intelligent, secure AI solutions.
+              © 2025 Locama. Empowering consultants with intelligent, secure AI solutions.
             </p>
           </div>
         </div>
