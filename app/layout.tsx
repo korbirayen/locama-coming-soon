@@ -6,23 +6,13 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Locama - Coming Soon!",
-  description:
-    "We're crafting something revolutionary. Join the exclusive waitlist and be among the first to experience the future.",
-  keywords: "Locama, coming soon, launch, waitlist, revolutionary, epic",
-  openGraph: {
-    title: "Locama - Coming Soon!",
-    description:
-      "We're crafting something revolutionary. Join the exclusive waitlist and be among the first to experience the future.",
-    type: "website",
+  title: "Locama - Coming Soon",
+  description: "The future of local marketing automation",
+  icons: {
+    icon: "/icon.ico",
+    shortcut: "/icon.ico",
+    apple: "/icon.ico",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Locama - Coming Soon!",
-    description:
-      "We're crafting something revolutionary. Join the exclusive waitlist and be among the first to experience the future.",
-  },
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -32,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-black`}>{children}</body>
+      <body className={inter.className}>{children}</body>
     </html>
   )
 }
